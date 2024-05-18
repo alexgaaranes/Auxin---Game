@@ -1,7 +1,8 @@
-extends RigidBody2D
+extends CharacterBody2D
 
 
-const SPEED = 10
+const SPEED = 300
+var player
 
 
 func _ready():
@@ -23,11 +24,14 @@ func _ready():
 		#add_child(snail)
 	pass
 
-func _process(delta):
-	#var player = get_tree().root.get_node("Node2D/Player")
-	#if player:
-		#var direction = (player.position - position).normalized()
-		#
-		#if direction.length() > 0:
-			#apply_central_impulse(direction * SPEED)
-	pass
+func _physics_process(delta):
+	player = get_node("%Player")
+	if player:
+		var direction = (player.position - self.position).normalized()
+		print(direction)
+
+		if direction.x > 0:
+			pass
+		velocity.x = 1 * SPEED
+		
+	move_and_slide()
