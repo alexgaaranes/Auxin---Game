@@ -1,27 +1,11 @@
-[gd_scene load_steps=31 format=3 uid="uid://bllxumol5avik"]
+[gd_scene load_steps=27 format=3 uid="uid://bllxumol5avik"]
 
 [ext_resource type="Texture2D" uid="uid://bctibysmi0p4k" path="res://assets/sprites/johnny-sprite-sheet.png" id="1_e87pn"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_nq203"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rdn1w"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_i22hl"]
 atlas = ExtResource("1_e87pn")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rx3bf"]
-atlas = ExtResource("1_e87pn")
-region = Rect2(128, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rhuo4"]
-atlas = ExtResource("1_e87pn")
-region = Rect2(128, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v1566"]
-atlas = ExtResource("1_e87pn")
-region = Rect2(128, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x1tr6"]
-atlas = ExtResource("1_e87pn")
-region = Rect2(128, 128, 32, 32)
+region = Rect2(0, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0nbmf"]
 atlas = ExtResource("1_e87pn")
@@ -71,23 +55,11 @@ region = Rect2(96, 96, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rdn1w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rx3bf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rhuo4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v1566")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x1tr6")
+"texture": SubResource("AtlasTexture_i22hl")
 }],
 "loop": true,
 "name": &"attack",
-"speed": 10.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -145,7 +117,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"spin",
-"speed": 5.0
+"speed": 15.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ngnbt"]
@@ -611,8 +583,6 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_nfqds"]
 resource_name = "attack"
-length = 0.5
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -620,10 +590,10 @@ tracks/0/path = NodePath("AnimatedSprite2D:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 1,
-"values": [&"attack"]
+"values": []
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -632,10 +602,10 @@ tracks/1/path = NodePath("AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 1,
-"values": [0, 1, 2, 3, 4]
+"values": []
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e634i"]

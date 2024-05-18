@@ -45,20 +45,25 @@ func spin_restart():
 func _process(delta):
 	if Input.is_action_just_pressed("hold_left") and can_press and not is_on_floor():
 		spin_restart()	# Restart initial values when charging
+		directionXY = get_direction()
+		if directionXY[0] > 0:
+			sprite.flip_h = false
+		if directionXY[0] < 0:
+			sprite.flip_h = true
 		velocity.y = 0	# Suspend midair
 		anim.play("spin")
 		charge = 1	# initial charge value
 		
 	if level1:
 		if $charge_time.time_left < 1.25:
-			print("level 2")
 			charge += 1
 			level1 = false
+			print("level 2")
 	if level2: 
 		if $charge_time.time_left < 0.75:
-			print("level 3")
 			charge += 1
 			level2 = false
+			print("level 3")
 	
 	
 func _on_charge_time_timeout():
@@ -80,15 +85,20 @@ func _physics_process(delta):
 	if Input.is_action_just_released("hold_left") and not is_on_floor() and can_release:
 		can_release = false
 		charge_time.stop()
-		anim.play("spin")
+		anim.play("attack")
 		charging_spin = false
 		directionXY = get_direction()
+		if directionXY[0] > 0:
+			sprite.flip_h = false
+		if directionXY[0] < 0:
+			sprite.flip_h = true
 		velocity.x = SPEED * charge * directionXY[0]
 		velocity.y = SPEED * charge * directionXY[1]
 		charge = 0
 		
 	
 	if Input.is_action_just_pressed("jump") and velocity.y == 0:
+		charging_spin = false
 		velocity.y = JUMP_VELOCITY
 		anim.play("jump")
 	
