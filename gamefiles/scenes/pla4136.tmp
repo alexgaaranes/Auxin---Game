@@ -595,7 +595,15 @@ libraries = {
 "": SubResource("AnimationLibrary_e634i")
 }
 
-[node name="charge_time" type="Timer" parent="."]
-wait_time = 2.0
+[node name="first_charge" type="Timer" parent="."]
+wait_time = 0.5
 
-[connection signal="timeout" from="charge_time" to="." method="_on_charge_time_timeout"]
+[node name="second_charge" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="over_charge" type="Timer" parent="."]
+wait_time = 0.75
+
+[connection signal="timeout" from="first_charge" to="." method="_on_first_charge_timeout"]
+[connection signal="timeout" from="second_charge" to="." method="_on_second_charge_timeout"]
+[connection signal="timeout" from="over_charge" to="." method="_on_over_charge_timeout"]

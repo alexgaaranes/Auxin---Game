@@ -105,7 +105,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"spin",
-"speed": 15.0
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ngnbt"]
@@ -594,8 +594,3 @@ shape = SubResource("RectangleShape2D_ngnbt")
 libraries = {
 "": SubResource("AnimationLibrary_e634i")
 }
-
-[node name="charge_time" type="Timer" parent="."]
-wait_time = 2.0
-
-[connection signal="timeout" from="charge_time" to="." method="_on_charge_time_timeout"]

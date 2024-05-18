@@ -1,51 +1,121 @@
 extends CharacterBody2D
 
 
-const SPEED = 10.0
+const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
+const CSPEED = 10.0
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var anim = get_node("AnimationPlayer")
 @onready var sprite = get_node("AnimatedSprite2D")
-var is_spinning: bool = false
+var directionXY
+var charge
+var direction
+var charging_spin: bool
+var first_start: bool
+var second_start: bool
+var over_start: bool
+var charge_exceed: bool
+var can_press = true
+var level1: bool
+var level2: bool
+var is_dropping: bool
+var can_release: bool
+
+
+# Get direction
+func get_direction():
+	var rel_mouse_pos = $".".get_local_mouse_position()
+	# get unit vector
+	var denom = ((rel_mouse_pos[0])**2 + (rel_mouse_pos[1])**2)**0.5
+	var direction = [rel_mouse_pos[0]/denom, rel_mouse_pos[1]/denom]
+	return direction
+
+func spin_restart():
+	charging_spin = true
+	can_press = false
+	can_release = true
+	level1 = true
+	level2 = true
+	charge_time.start()
+	
+@onready var charge_time = $charge_time
+func _process(delta):
+	if Input.is_action_just_pressed("hold_left") and can_press and not is_on_floor():
+		spin_restart()	# Restart initial values when charging
+		velocity.y = 0	# Suspend midair
+		anim.play("spin")
+		charge = 1	# initial charge value
+		
+	if level1:
+		if $charge_time.time_left < 1.25:
+			print("level 2")
+			charge += 1
+			level1 = false
+	if level2: 
+		if $charge_time.time_left < 0.75:
+			print("level 3")
+			charge += 1
+			level2 = false
+	
+	
+func _on_charge_time_timeout():
+	print("over charge")
+	is_dropping = true
+	anim.play("fall")
+	velocity.y = 0
+	charge = 0
 
 
 func _physics_process(delta):
 	# Add the gravity.
-	if not is_on_floor():
-		if not is_spinning:
-			velocity.y += gravity * delta
-		if Input.is_action_just_pressed("ui_accept"):
-			is_spinning = true
-			velocity.y = 0
-			anim.play("spin")
-		if Input.is_action_just_released("ui_accept"):
-			is_spinning = false
-
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if not is_on_floor() and not charging_spin:
+		velocity.y += gravity * delta
+	
+	if is_dropping:
+		velocity.y += gravity * delta
+		
+	if Input.is_action_just_released("hold_left") and not is_on_floor() and can_release:
+		can_release = false
+		charge_time.stop()
+		anim.play("spin")
+		charging_spin = false
+		directionXY = get_direction()
+		velocity.x = SPEED * charge * directionXY[0]
+		velocity.y = SPEED * charge * directionXY[1]
+		charge = 0
+		
+	
+	if Input.is_action_just_pressed("jump") and velocity.y == 0:
 		velocity.y = JUMP_VELOCITY
 		anim.play("jump")
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = 0
-	if velocity.y == 0 and not is_spinning:
-		direction = Input.get_axis("ui_left", "ui_right")
-	if direction == 1:
-		sprite.flip_h = false
-	if direction == -1:
-		sprite.flip_h = true
-	if direction:
-		if velocity.y == 0 and not is_spinning:
-			anim.play("crawl")
-		velocity.x = direction * SPEED
-	else:
-		if velocity.y == 0 and not is_spinning:
-			anim.play("idle")
+	
+	# Causes pause
+	if velocity.y == 0:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-	if velocity.y > 0:
+	if velocity.y > 0 and can_press:
 		anim.play("fall")
+	
+	if is_on_floor() and velocity.y == 0:
+		can_press = true
+		is_dropping = false
+		direction = Input.get_axis("crawl_left", "crawl_right")
+		if direction:
+			if direction > 0:
+				sprite.flip_h = false
+			if direction < 0:
+				sprite.flip_h = true
+			anim.play("crawl")
+			velocity.x = direction * CSPEED
+		anim.play("idle")
+
 
 	move_and_slide()
+
+
+
+
+
+

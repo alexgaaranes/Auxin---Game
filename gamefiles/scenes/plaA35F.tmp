@@ -596,6 +596,6 @@ libraries = {
 }
 
 [node name="charge_time" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 3.0
 
 [connection signal="timeout" from="charge_time" to="." method="_on_charge_time_timeout"]
