@@ -1,8 +1,11 @@
 extends CharacterBody2D
 
 
-const SPEED = 300
+const SPEED = 5
 var player
+var direction
+@onready var anim = get_node("AnimationPlayer")
+@onready var sprite = get_node("AnimatedSprite2D")
 
 
 func _ready():
@@ -25,13 +28,16 @@ func _ready():
 	pass
 
 func _physics_process(delta):
-	player = get_node("%Player")
-	if player:
-		var direction = (player.position - self.position).normalized()
-		print(direction)
+	if 0 - self.position.x > 0:
+		direction = 1
+	if 0 - self.position.x < 0:
+		direction = -1
 
-		if direction.x > 0:
-			pass
-		velocity.x = 1 * SPEED
+	if direction > 0:
+		sprite.flip_h = true
+	if direction < 0:
+		sprite.flip_h = false
+	anim.play("walk")
+	velocity.x = direction * SPEED
 		
 	move_and_slide()
