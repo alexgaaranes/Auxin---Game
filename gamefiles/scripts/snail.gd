@@ -4,6 +4,7 @@ extends CharacterBody2D
 const SPEED = 5
 var player
 var direction
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var anim = get_node("AnimationPlayer")
 @onready var sprite = get_node("AnimatedSprite2D")
 
@@ -28,6 +29,9 @@ func _ready():
 	pass
 
 func _physics_process(delta):
+	if not is_on_floor():
+		velocity.y += gravity * delta
+	
 	if 0 - self.position.x > 0:
 		direction = 1
 	if 0 - self.position.x < 0:
