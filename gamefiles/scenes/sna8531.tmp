@@ -379,7 +379,7 @@ _data = {
 "walk": SubResource("Animation_y1iak")
 }
 
-[node name="Snail" type="CharacterBody2D"]
+[node name="Snail" type="RigidBody2D"]
 script = ExtResource("1_0cpwo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

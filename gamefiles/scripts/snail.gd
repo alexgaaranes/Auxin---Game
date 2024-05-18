@@ -1,4 +1,9 @@
-extends RigidBody2D
+extends CharacterBody2D
+
+
+const SPEED = 300
+var player
+
 
 func _ready():
 	#var rand = RandomNumberGenerator.new()
@@ -18,3 +23,15 @@ func _ready():
 			#
 		#add_child(snail)
 	pass
+
+func _physics_process(delta):
+	player = get_node("%Player")
+	if player:
+		var direction = (player.position - self.position).normalized()
+		print(direction)
+
+		if direction.x > 0:
+			pass
+		velocity.x = 1 * SPEED
+		
+	move_and_slide()
