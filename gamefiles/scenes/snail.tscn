@@ -1,5 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://2rejg57r6y3"]
+[gd_scene load_steps=36 format=3 uid="uid://2rejg57r6y3"]
 
+[ext_resource type="Script" path="res://scripts/snail.gd" id="1_0cpwo"]
 [ext_resource type="Texture2D" uid="uid://btrrknfkknbt6" path="res://assets/sprites/snail-sprite-sheet.png" id="1_hmmay"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cls4u"]
@@ -29,6 +30,58 @@ region = Rect2(0, 32, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_lgn57"]
 atlas = ExtResource("1_hmmay")
 region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cexcg"]
+atlas = ExtResource("1_hmmay")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7rqi"]
+atlas = ExtResource("1_hmmay")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7y6pa"]
+atlas = ExtResource("1_hmmay")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3nte"]
+atlas = ExtResource("1_hmmay")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_th4jc"]
+atlas = ExtResource("1_hmmay")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nhc2"]
+atlas = ExtResource("1_hmmay")
+region = Rect2(160, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n77mw"]
+atlas = ExtResource("1_hmmay")
+region = Rect2(192, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8kedd"]
+atlas = ExtResource("1_hmmay")
+region = Rect2(224, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oitir"]
+atlas = ExtResource("1_hmmay")
+region = Rect2(256, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0k85"]
+atlas = ExtResource("1_hmmay")
+region = Rect2(288, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nihxr"]
+atlas = ExtResource("1_hmmay")
+region = Rect2(320, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6h155"]
+atlas = ExtResource("1_hmmay")
+region = Rect2(352, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpk6r"]
+atlas = ExtResource("1_hmmay")
+region = Rect2(384, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_77rf8"]
 atlas = ExtResource("1_hmmay")
@@ -82,6 +135,50 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cexcg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7rqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7y6pa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3nte")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_th4jc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6nhc2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n77mw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8kedd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oitir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0k85")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nihxr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6h155")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpk6r")
+}],
+"loop": true,
+"name": &"spawn",
 "speed": 5.0
 }, {
 "frames": [{
@@ -215,6 +312,34 @@ tracks/1/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_15mc8"]
+resource_name = "spawn"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"spawn"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12]
+}
+
 [sub_resource type="Animation" id="Animation_y1iak"]
 resource_name = "walk"
 loop_mode = 1
@@ -250,10 +375,12 @@ _data = {
 "die": SubResource("Animation_8r2uo"),
 "hurt": SubResource("Animation_ssj1n"),
 "idle": SubResource("Animation_gf6kx"),
+"spawn": SubResource("Animation_15mc8"),
 "walk": SubResource("Animation_y1iak")
 }
 
 [node name="Snail" type="RigidBody2D"]
+script = ExtResource("1_0cpwo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)

@@ -1,20 +1,23 @@
 extends Node
 
-var health = 20
-var score = 0
+# variables
+var health = 0
+var exp = 0
+var wave = 1
 
-func add_point():
-	score += 1
-	print(score)
-	
-func mush_heal():
-	if health < 20:
-		health += 2
-	print(health)
+@onready var player = %Player
+var screen_size
+var camera_margin_left
+var camera_margin_right
+var player_x_pos
 
-func snail_dmg():
-	health -= 1
-	print(health)
-	
+func _ready():
+	screen_size = get_viewport().size
+	print(screen_size)
+
 func _process(delta):
-	pass
+	player_x_pos = player.global_position.x
+	camera_margin_left =  player_x_pos - (screen_size.x)*0.5
+	camera_margin_right = player_x_pos + (screen_size.x)*0.5
+
+	#print(player.global_position, camera_margin_left, camera_margin_right)
