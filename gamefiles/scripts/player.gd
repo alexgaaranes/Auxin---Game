@@ -30,7 +30,7 @@ func get_direction():
 	var rel_mouse_pos = $".".get_local_mouse_position()
 	# get unit vector
 	var denom = ((rel_mouse_pos[0])**2 + (rel_mouse_pos[1])**2)**0.5
-	var direction = [rel_mouse_pos[0]/denom, rel_mouse_pos[1]/denom]
+	direction = [rel_mouse_pos[0]/denom, rel_mouse_pos[1]/denom]
 	return direction
 
 func spin_restart():
@@ -74,7 +74,7 @@ func _physics_process(delta):
 	if not is_on_floor() and not charging_spin:
 		velocity.y += gravity * delta
 	
-	if is_dropping:
+	if is_dropping and not is_on_floor():
 		velocity.y += gravity * delta
 		
 	if Input.is_action_just_released("hold_left") and not is_on_floor() and can_release:
@@ -109,7 +109,8 @@ func _physics_process(delta):
 				sprite.flip_h = true
 			anim.play("crawl")
 			velocity.x = direction * CSPEED
-		anim.play("idle")
+		else:
+			anim.play("idle")
 
 
 	move_and_slide()
