@@ -58,12 +58,12 @@ func _process(delta):
 		if $charge_time.time_left < 1.25:
 			charge += 1
 			level1 = false
-			print("level 2")
+			#print("level 2")
 	if level2: 
 		if $charge_time.time_left < 0.75:
 			charge += 1
 			level2 = false
-			print("level 3")
+			#print("level 3")
 	
 	
 func _on_charge_time_timeout():
