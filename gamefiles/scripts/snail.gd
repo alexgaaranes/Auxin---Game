@@ -1,5 +1,9 @@
 extends RigidBody2D
 
+
+const SPEED = 10
+
+
 func _ready():
 	#var rand = RandomNumberGenerator.new()
 	#var snail_scene = load("res://scenes/snail.tscn")
@@ -17,4 +21,13 @@ func _ready():
 		#snail.position.x = x
 			#
 		#add_child(snail)
+	pass
+
+func _process(delta):
+	#var player = get_tree().root.get_node("Node2D/Player")
+	#if player:
+		#var direction = (player.position - position).normalized()
+		#
+		#if direction.length() > 0:
+			#apply_central_impulse(direction * SPEED)
 	pass
