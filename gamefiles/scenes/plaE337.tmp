@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bllxumol5avik"]
+[gd_scene load_steps=19 format=3 uid="uid://bllxumol5avik"]
 
 [ext_resource type="Texture2D" uid="uid://bctibysmi0p4k" path="res://assets/sprites/johnny-sprite-sheet.png" id="1_e87pn"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_nq203"]
@@ -30,22 +30,6 @@ region = Rect2(0, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_vl4km"]
 atlas = ExtResource("1_e87pn")
 region = Rect2(0, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jb2te"]
-atlas = ExtResource("1_e87pn")
-region = Rect2(0, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o54jj"]
-atlas = ExtResource("1_e87pn")
-region = Rect2(32, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6brye"]
-atlas = ExtResource("1_e87pn")
-region = Rect2(64, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xbo0v"]
-atlas = ExtResource("1_e87pn")
-region = Rect2(96, 96, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mcxx7"]
 animations = [{
@@ -88,23 +72,6 @@ animations = [{
 }],
 "loop": true,
 "name": &"jump",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jb2te")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o54jj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6brye")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xbo0v")
-}],
-"loop": true,
-"name": &"spin",
 "speed": 5.0
 }]
 
@@ -490,93 +457,13 @@ tracks/5/keys = {
 "values": [Vector2(0.625, 1.25)]
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_b1eaf"]
-
-[sub_resource type="Animation" id="Animation_6ti7d"]
-resource_name = "spin"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"spin"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CollisionShape2D:shape")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [SubResource("CircleShape2D_b1eaf")]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CollisionShape2D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CollisionShape2D:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CollisionShape2D:scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e634i"]
 _data = {
 "RESET": SubResource("Animation_puij5"),
 "crawl": SubResource("Animation_efmlr"),
 "fall": SubResource("Animation_c7wyc"),
 "idle": SubResource("Animation_4k2iw"),
-"jump": SubResource("Animation_5jx8p"),
-"spin": SubResource("Animation_6ti7d")
+"jump": SubResource("Animation_5jx8p")
 }
 
 [node name="Player" type="CharacterBody2D"]
