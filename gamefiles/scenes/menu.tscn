@@ -1,3 +1,78 @@
-[gd_scene format=3 uid="uid://c8osupxg4xngb"]
+[gd_scene load_steps=6 format=3 uid="uid://c8osupxg4xngb"]
+
+[ext_resource type="PackedScene" uid="uid://dko3ikns273rf" path="res://scenes/parallax_background.tscn" id="1_1vwa1"]
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_k7f2f"]
+[ext_resource type="Texture2D" uid="uid://tx75rcv18fdq" path="res://assets/sprites/button_normal.png" id="2_omonu"]
+[ext_resource type="FontFile" uid="uid://cdydi7r2xa3op" path="res://assets/font (from brackeys)/PixelOperator8.ttf" id="3_e818y"]
+[ext_resource type="Texture2D" uid="uid://dgpohcksfban5" path="res://assets/sprites/button_pressed.png" id="3_qdlao"]
 
 [node name="Menu" type="Node2D"]
+script = ExtResource("1_k7f2f")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_1vwa1")]
+
+[node name="Play" type="TextureButton" parent="."]
+offset_left = 77.0
+offset_top = 96.0
+offset_right = 141.0
+offset_bottom = 128.0
+scale = Vector2(4, 4)
+texture_normal = ExtResource("2_omonu")
+texture_pressed = ExtResource("3_qdlao")
+texture_hover = ExtResource("2_omonu")
+
+[node name="Label" type="Label" parent="Play"]
+layout_mode = 0
+offset_left = 17.75
+offset_top = 10.75
+offset_right = 69.75
+offset_bottom = 30.75
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_e818y")
+text = "Play"
+
+[node name="Tutorial" type="TextureButton" parent="."]
+offset_left = 78.0
+offset_top = 287.0
+offset_right = 142.0
+offset_bottom = 327.0
+scale = Vector2(4, 4)
+texture_normal = ExtResource("2_omonu")
+texture_pressed = ExtResource("3_qdlao")
+texture_hover = ExtResource("2_omonu")
+
+[node name="Label2" type="Label" parent="Tutorial"]
+layout_mode = 0
+offset_left = 6.25
+offset_top = 12.25
+offset_right = 108.25
+offset_bottom = 32.25
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_e818y")
+text = "Tutorial"
+
+[node name="Quit" type="TextureButton" parent="."]
+offset_left = 79.0
+offset_top = 473.0
+offset_right = 143.0
+offset_bottom = 513.0
+scale = Vector2(4, 4)
+texture_normal = ExtResource("2_omonu")
+texture_pressed = ExtResource("3_qdlao")
+texture_hover = ExtResource("2_omonu")
+
+[node name="Label3" type="Label" parent="Quit"]
+layout_mode = 0
+offset_left = 17.75
+offset_top = 11.5
+offset_right = 119.75
+offset_bottom = 31.5
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_e818y")
+text = "Quit"
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
