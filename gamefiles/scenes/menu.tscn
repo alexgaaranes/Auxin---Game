@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c8osupxg4xngb"]
 
 [ext_resource type="PackedScene" uid="uid://dko3ikns273rf" path="res://scenes/parallax_background.tscn" id="1_1vwa1"]
-[ext_resource type="Script" path="res://scenes/menu.gd" id="1_rrkkx"]
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_rrkkx"]
 [ext_resource type="Texture2D" uid="uid://tx75rcv18fdq" path="res://assets/sprites/button_normal.png" id="2_omonu"]
 [ext_resource type="FontFile" uid="uid://cdydi7r2xa3op" path="res://assets/font (from brackeys)/PixelOperator8.ttf" id="3_e818y"]
 [ext_resource type="Texture2D" uid="uid://dgpohcksfban5" path="res://assets/sprites/button_pressed.png" id="3_qdlao"]

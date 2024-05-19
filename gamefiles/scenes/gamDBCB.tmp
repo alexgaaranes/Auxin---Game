@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dh3xsa1tbs347"]
+[gd_scene load_steps=17 format=3 uid="uid://dh3xsa1tbs347"]
 
 [ext_resource type="Texture2D" uid="uid://bleevr8nlfx8o" path="res://assets/sprites/background/sky_01.png" id="1_hg783"]
 [ext_resource type="Texture2D" uid="uid://cfdtocjhpl6wv" path="res://assets/sprites/tilemap.png" id="1_r70p0"]
@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://dcrgaksl1vlnj" path="res://assets/sprites/health.png" id="10_h3jdi"]
 [ext_resource type="PackedScene" uid="uid://dwyk40rswoq55" path="res://scenes/corn.tscn" id="12_si7ov"]
 [ext_resource type="PackedScene" uid="uid://blycx63v5c162" path="res://scenes/killzone.tscn" id="13_esltb"]
-[ext_resource type="PackedScene" uid="uid://blxadare2c7q6" path="res://scenes/dookie.tscn" id="14_u4874"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l0ddg"]
 texture = ExtResource("1_r70p0")
@@ -368,9 +367,6 @@ position = Vector2(129, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone2"]
 position = Vector2(1265, -450)
 shape = SubResource("RectangleShape2D_2rbip")
-
-[node name="dookie" parent="." instance=ExtResource("14_u4874")]
-position = Vector2(-193, -9)
 
 [connection signal="timeout" from="GameManager/spawn_timer" to="GameManager/spawn_timer" method="_on_timeout"]
 [connection signal="timeout" from="GameManager/lose_timer" to="GameManager" method="_on_lose_timer_timeout"]

@@ -22,7 +22,7 @@ func got_hit(damage):
 	getting_hurt = true
 
 var exp_obj = load("res://scenes/exp.tscn")
-
+var dookie_obj = load("res://scenes/dookie.tscn")
 
 func death():
 	if drop:
@@ -31,7 +31,17 @@ func death():
 		exp.amount = 3
 		get_tree().get_root().add_child(exp)
 		drop = false
+	dookie_chance()
 	anim.play("die")
+
+
+func dookie_chance():
+	var random = randi_range(0,10)
+	if random > 8:
+		var dookie = dookie_obj.instantiate()
+		dookie.position == Vector2(self.position.x, self.position.y - 10)
+		get_tree().get_root().add_child(dookie)
+			
 
 
 func _process(delta):

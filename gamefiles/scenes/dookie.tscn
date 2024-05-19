@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://blxadare2c7q6"]
 
 [ext_resource type="Texture2D" uid="uid://dhrkhmwuo5yuk" path="res://assets/sprites/dookie-sprite-sheet.png" id="1_aol4e"]
-[ext_resource type="Script" path="res://scenes/dookie.gd" id="1_q5xc1"]
+[ext_resource type="Script" path="res://scripts/dookie.gd" id="1_q5xc1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xgns3"]
 
@@ -42,6 +42,8 @@ animations = [{
 }]
 
 [node name="dookie" type="Area2D"]
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("1_q5xc1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -50,6 +52,6 @@ shape = SubResource("CircleShape2D_xgns3")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dre33")
 autoplay = "default"
-frame_progress = 0.154876
+frame_progress = 0.064226
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

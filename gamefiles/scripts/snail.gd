@@ -31,7 +31,7 @@ func death():
 		exp.position = Vector2(self.position.x, self.position.y - 10)
 		exp.amount = 1
 		get_tree().get_root().add_child(exp)
-		drop = false
+		drop = false 
 	anim.play("die")
 	
 func get_alias():

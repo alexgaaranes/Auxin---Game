@@ -4,5 +4,5 @@ var amount
  
 func _on_body_entered(body):
 	if body.name == "Player":
-		body.picked_exp(amount)
+		body.picked_dookie()
 		queue_free()

@@ -81,6 +81,7 @@ func _on_charge_time_timeout():
 	anim.play("fall")
 	velocity.y = 0
 	charge = 0
+	can_release = false
 
 
 func _physics_process(delta):
@@ -111,7 +112,7 @@ func _physics_process(delta):
 	
 	
 	
-	if Input.is_action_just_pressed("jump") and velocity.y == 0:
+	if Input.is_action_just_pressed("jump") and velocity.y == 0 and not can_release:
 		charging_spin = false
 		velocity.y = JUMP_VELOCITY
 		anim.play("jump")
@@ -144,6 +145,9 @@ func picked_exp(amount):
 	var game_manager = %GameManager
 	game_manager.addexp(amount)
 
+func picked_dookie():
+	var game_manager = %GameManager
+	game_manager.addhp()
 
 # ATTACK
 func _on_attack_area_body_entered(body):

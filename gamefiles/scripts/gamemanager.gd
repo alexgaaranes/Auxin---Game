@@ -16,6 +16,16 @@ var camera_margin_right
 var player_x_pos
 var upgradable = false
 
+func addhp():
+	if health < 20:
+		health += 3
+	
+	if health > 20:
+		health = 20
+
+func fetch_wave():
+	return wave
+
 func game_over():
 	health = 0
 
@@ -27,7 +37,7 @@ func addexp(amount):
 func addwave():
 	wave += 1
 	var wave_label = %wave_label
-	wave_label = "Wave " + str(wave)
+	wave_label.text = "Wave " + str(wave)
 
 func corndmg(amount):
 	health -= amount
