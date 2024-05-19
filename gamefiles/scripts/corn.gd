@@ -43,7 +43,8 @@ func die():
 	Engine.time_scale = 0.3
 	dead = true
 	anim.play("die")
-
+	var player = %Player
+	player.die()
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "die":

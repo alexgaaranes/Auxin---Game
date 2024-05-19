@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dcrgaksl1vlnj" path="res://assets/sprites/health.png" id="10_h3jdi"]
 [ext_resource type="PackedScene" uid="uid://dwyk40rswoq55" path="res://scenes/corn.tscn" id="12_si7ov"]
 [ext_resource type="PackedScene" uid="uid://blycx63v5c162" path="res://scenes/killzone.tscn" id="13_esltb"]
-[ext_resource type="PackedScene" uid="uid://blxadare2c7q6" path="res://scenes/dookie.tscn" id="14_u4874"]
+[ext_resource type="PackedScene" uid="uid://u18fbkgs8f2l" path="res://scenes/rat.tscn" id="14_duay0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l0ddg"]
 texture = ExtResource("1_r70p0")
@@ -369,8 +369,8 @@ position = Vector2(129, 1)
 position = Vector2(1265, -450)
 shape = SubResource("RectangleShape2D_2rbip")
 
-[node name="dookie" parent="." instance=ExtResource("14_u4874")]
-position = Vector2(-193, -9)
+[node name="rat" parent="." instance=ExtResource("14_duay0")]
+position = Vector2(-292, -2)
 
 [connection signal="timeout" from="GameManager/spawn_timer" to="GameManager/spawn_timer" method="_on_timeout"]
 [connection signal="timeout" from="GameManager/lose_timer" to="GameManager" method="_on_lose_timer_timeout"]

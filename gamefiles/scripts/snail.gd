@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 10
+const SPEED = 15
 
 const dmg = 1
 

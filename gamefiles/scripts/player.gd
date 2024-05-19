@@ -149,6 +149,9 @@ func picked_dookie():
 	var game_manager = %GameManager
 	game_manager.addhp()
 
+func die():
+	anim.play("die")
+
 # ATTACK
 func _on_attack_area_body_entered(body):
 	if body.has_method("got_hit"):

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 20
+const SPEED = 35
 
 const dmg = 3
 
@@ -31,7 +31,7 @@ func death():
 		exp.amount = 3
 		get_tree().get_root().add_child(exp)
 		drop = false
-	dookie_chance()
+		dookie_chance()
 	anim.play("die")
 
 
@@ -40,7 +40,7 @@ func dookie_chance():
 	if random > 8:
 		var dookie = dookie_obj.instantiate()
 		dookie.position == Vector2(self.position.x, self.position.y - 10)
-		get_tree().get_root().add_child(dookie)
+		add_child(dookie)
 			
 
 
