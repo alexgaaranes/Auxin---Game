@@ -16,6 +16,9 @@ var camera_margin_right
 var player_x_pos
 var upgradable = false
 
+func game_over():
+	health = 0
+
 func addexp(amount):
 	exp += amount
 	var exp_label = $"../UI/exp_label"
@@ -66,11 +69,11 @@ func _process(delta):
 
 	# LOSE
 	if health <= 0:
+		lose_timer.start()
 		lose()
 
 
 func lose():
-	lose_timer.start()
 	Engine.time_scale = 0.3
 	print(lose_timer.time_left)
 	

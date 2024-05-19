@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dh3xsa1tbs347"]
+[gd_scene load_steps=17 format=3 uid="uid://dh3xsa1tbs347"]
 
 [ext_resource type="Texture2D" uid="uid://bleevr8nlfx8o" path="res://assets/sprites/background/sky_01.png" id="1_hg783"]
 [ext_resource type="Texture2D" uid="uid://cfdtocjhpl6wv" path="res://assets/sprites/tilemap.png" id="1_r70p0"]
@@ -12,6 +12,7 @@
 [ext_resource type="FontFile" uid="uid://dv8t8kpmqhrol" path="res://assets/font (from brackeys)/PixelOperator8-Bold.ttf" id="10_4raxq"]
 [ext_resource type="Texture2D" uid="uid://dcrgaksl1vlnj" path="res://assets/sprites/health.png" id="10_h3jdi"]
 [ext_resource type="PackedScene" uid="uid://dwyk40rswoq55" path="res://scenes/corn.tscn" id="12_si7ov"]
+[ext_resource type="PackedScene" uid="uid://blycx63v5c162" path="res://scenes/killzone.tscn" id="13_esltb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l0ddg"]
 texture = ExtResource("1_r70p0")
@@ -222,6 +223,9 @@ physics_layer_0/collision_layer = 11
 physics_layer_0/collision_mask = 9
 sources/0 = SubResource("TileSetAtlasSource_l0ddg")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2rbip"]
+size = Vector2(18, 901)
+
 [node name="Game" type="Node2D"]
 
 [node name="GameManager" type="Node" parent="."]
@@ -245,6 +249,19 @@ motion_mirroring = Vector2(1152, 0)
 position = Vector2(288, -26)
 scale = Vector2(3, 3)
 texture = ExtResource("1_hg783")
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 0.2)
+
+[node name="Protect_label" type="Label" parent="ParallaxBackground/ParallaxLayer5"]
+offset_left = 6.0
+offset_top = 8.0
+offset_right = 240.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("10_4raxq")
+text = "Protect the Corn"
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.3, 0.3)
@@ -334,6 +351,20 @@ unique_name_in_owner = true
 position = Vector2(1, -23)
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
+
+[node name="Killzone" parent="." instance=ExtResource("13_esltb")]
+position = Vector2(129, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(-1504, -451.5)
+shape = SubResource("RectangleShape2D_2rbip")
+
+[node name="Killzone2" parent="." instance=ExtResource("13_esltb")]
+position = Vector2(129, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone2"]
+position = Vector2(1265, -450)
+shape = SubResource("RectangleShape2D_2rbip")
 
 [connection signal="timeout" from="GameManager/spawn_timer" to="GameManager/spawn_timer" method="_on_timeout"]
 [connection signal="timeout" from="GameManager/lose_timer" to="GameManager" method="_on_lose_timer_timeout"]
