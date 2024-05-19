@@ -70,16 +70,16 @@ func _process(delta):
 	# LOSE
 	if health <= 0:
 		$"../Corn".die()
-		get_tree().change_scene_to_file("res://scenes/menu.tscn")
-		lose_timer.start()
-		lose()
+		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+		#lose_timer.start()
+		#lose()
 
 
-func lose():
-	Engine.time_scale = 0.3
-	print(lose_timer.time_left)
+#func lose():
+	#Engine.time_scale = 0.3
+	#print(lose_timer.time_left)
 	
 	#print(player.global_position, camera_margin_left, camera_margin_right)
 	
-func _on_lose_timer_timeout():
-	get_tree().change_scene_to_file("res://scenes/menu.tscn")
+#func _on_lose_timer_timeout():
+	#get_tree().change_scene_to_file("res://scenes/menu.tscn")
