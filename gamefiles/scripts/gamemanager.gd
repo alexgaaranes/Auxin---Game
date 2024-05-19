@@ -70,7 +70,6 @@ func _process(delta):
 	# LOSE
 	if health <= 0:
 		$"../Corn".die()
-		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 		#lose_timer.start()
 		#lose()
 
