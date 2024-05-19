@@ -69,6 +69,8 @@ func _process(delta):
 
 	# LOSE
 	if health <= 0:
+		$"../Corn".die()
+		get_tree().change_scene_to_file("res://scenes/menu.tscn")
 		lose_timer.start()
 		lose()
 
