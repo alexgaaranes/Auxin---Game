@@ -370,7 +370,7 @@ position = Vector2(1265, -450)
 shape = SubResource("RectangleShape2D_2rbip")
 
 [node name="rat" parent="." instance=ExtResource("14_duay0")]
-position = Vector2(-292, -2)
+position = Vector2(-327, -5)
 
 [connection signal="timeout" from="GameManager/spawn_timer" to="GameManager/spawn_timer" method="_on_timeout"]
 [connection signal="timeout" from="GameManager/lose_timer" to="GameManager" method="_on_lose_timer_timeout"]

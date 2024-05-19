@@ -22,6 +22,9 @@ func addhp():
 	
 	if health > 20:
 		health = 20
+	
+	var hp_label = $"../UI/hp_label"
+	hp_label.text = "Corn HP: " + str(health)
 
 func fetch_wave():
 	return wave
