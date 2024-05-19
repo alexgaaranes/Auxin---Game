@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://u18fbkgs8f2l"]
+
+[node name="Rat" type="CharacterBody2D"]

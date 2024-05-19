@@ -4,26 +4,25 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const CSPEED = 10.0
-
+const base_dmg = 1
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var anim = get_node("AnimationPlayer")
 @onready var sprite = get_node("AnimatedSprite2D")
 var directionXY
-var charge
+var charge = 0
 var direction
 var charging_spin: bool
-var first_start: bool
-var second_start: bool
-var over_start: bool
 var charge_exceed: bool
 var can_press = true
 var level1: bool
 var level2: bool
 var is_dropping: bool
 var can_release: bool
-
+var attacking: bool
+var dyn_dmg
+var accumulated_charge
 
 # Get direction
 func get_direction():
@@ -33,7 +32,9 @@ func get_direction():
 	direction = [rel_mouse_pos[0]/denom, rel_mouse_pos[1]/denom]
 	return direction
 
+
 func spin_restart():
+	charge = 0
 	charging_spin = true
 	can_press = false
 	can_release = true
@@ -52,22 +53,21 @@ func _process(delta):
 			sprite.flip_h = true
 		velocity.y = 0	# Suspend midair
 		anim.play("spin")
-		charge = 1	# initial charge value
+		charge += 1
 		
 	if level1:
 		if $charge_time.time_left < 1.25:
 			charge += 1
 			level1 = false
-			print("level 2")
+			#print("level 2")
 	if level2: 
 		if $charge_time.time_left < 0.75:
 			charge += 1
 			level2 = false
-			print("level 3")
-	
+			#rint("level 3")
 	
 func _on_charge_time_timeout():
-	print("over charge")
+	#print("over charge")
 	is_dropping = true
 	anim.play("fall")
 	velocity.y = 0
@@ -83,8 +83,11 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 		
 	if Input.is_action_just_released("hold_left") and not is_on_floor() and can_release:
+		attacking = true
 		can_release = false
+		accumulated_charge = charge
 		charge_time.stop()
+		#print(accumulated_charge, charge)
 		anim.play("attack")
 		charging_spin = false
 		directionXY = get_direction()
@@ -94,8 +97,10 @@ func _physics_process(delta):
 			sprite.flip_h = true
 		velocity.x = SPEED * charge * directionXY[0]
 		velocity.y = SPEED * charge * directionXY[1]
-		charge = 0
+		attacking = false
 		
+	
+	
 	
 	if Input.is_action_just_pressed("jump") and velocity.y == 0:
 		charging_spin = false
@@ -124,9 +129,23 @@ func _physics_process(delta):
 
 
 	move_and_slide()
+	
+func picked_exp():
+	var game_manager = %GameManager
+	game_manager.addexp()
 
 
+# ATTACK
+func _on_attack_area_body_entered(body):
+	if body.has_method("got_hit"):
+		if charge == 0:
+			dyn_dmg = 0
+		elif charge > 0:
+			dyn_dmg = base_dmg * accumulated_charge
+		#print(accumulated_charge)
+		body.got_hit(dyn_dmg)
 
 
-
-
+func _on_pick_up_body_entered(body):
+	if body:
+		print(body.name)
