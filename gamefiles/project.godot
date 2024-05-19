@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Game Jam Lb"
+config/name="Auxin (Game Jam Los Banos)"
 run/main_scene="res://scenes/menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"

@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://blxadare2c7q6"]
+[gd_scene load_steps=9 format=3 uid="uid://blxadare2c7q6"]
 
 [ext_resource type="Texture2D" uid="uid://dhrkhmwuo5yuk" path="res://assets/sprites/dookie-sprite-sheet.png" id="1_aol4e"]
 [ext_resource type="Script" path="res://scripts/dookie.gd" id="1_q5xc1"]
-[ext_resource type="AudioStream" uid="uid://ccspehptm8dt0" path="res://assets/audio/sfx/pick-up.wav" id="3_iydwk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xgns3"]
 
@@ -54,10 +53,5 @@ shape = SubResource("CircleShape2D_xgns3")
 sprite_frames = SubResource("SpriteFrames_dre33")
 autoplay = "default"
 frame_progress = 0.877698
-
-[node name="pick-up" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_iydwk")
-volume_db = 10.0
-bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -38,12 +38,11 @@ func death():
 
 func dookie_chance():
 	var random = randi_range(0,10)
-	if random > -1:
-		print("cook!")
+	if random > 7:
+		#print("cook!")
 		var dookie = dookie_obj.instantiate()
 		dookie.position == Vector2(self.position.x, self.position.y - 10)
 		add_child(dookie)
-			
 
 
 func _process(delta):

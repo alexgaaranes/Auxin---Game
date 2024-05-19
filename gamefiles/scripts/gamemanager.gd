@@ -17,12 +17,13 @@ var player_x_pos
 var upgradable = false
 
 func addhp():
+	$"pick-up".play()
 	if health < 20:
 		health += 3
 	
 	if health > 20:
 		health = 20
-	
+	print(health)
 	var hp_label = $"../UI/hp_label"
 	hp_label.text = "Corn HP: " + str(health)
 
@@ -33,6 +34,7 @@ func game_over():
 	health = 0
 
 func addexp(amount):
+	$"pick-up".play()
 	exp += amount
 	var exp_label = $"../UI/exp_label"
 	exp_label.text = "Exp: " + str(exp)

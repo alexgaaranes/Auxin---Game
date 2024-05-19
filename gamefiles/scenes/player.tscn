@@ -991,17 +991,14 @@ shape = SubResource("CircleShape2D_kt4mk")
 
 [node name="jump" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_06v0r")
-bus = &"SFX"
 
 [node name="spin" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_tw8yx")
 volume_db = -25.0
-bus = &"SFX"
 
 [node name="attack" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_4ymrv")
 volume_db = -10.0
-bus = &"SFX"
 
 [connection signal="body_entered" from="AnimatedSprite2D/AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="timeout" from="charge_time" to="." method="_on_charge_time_timeout"]

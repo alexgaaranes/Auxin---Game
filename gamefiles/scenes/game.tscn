@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dh3xsa1tbs347"]
+[gd_scene load_steps=18 format=3 uid="uid://dh3xsa1tbs347"]
 
 [ext_resource type="Texture2D" uid="uid://bleevr8nlfx8o" path="res://assets/sprites/background/sky_01.png" id="1_hg783"]
 [ext_resource type="Texture2D" uid="uid://cfdtocjhpl6wv" path="res://assets/sprites/tilemap.png" id="1_r70p0"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/spawn_timer.gd" id="2_whyny"]
 [ext_resource type="Texture2D" uid="uid://bia7iki4hbbhv" path="res://assets/sprites/background/background_01.png" id="3_iqdhp"]
 [ext_resource type="PackedScene" uid="uid://d3kmulvmnbvoq" path="res://scenes/arrow.tscn" id="3_n28v3"]
+[ext_resource type="AudioStream" uid="uid://ccspehptm8dt0" path="res://assets/audio/sfx/pick-up.wav" id="3_on8eg"]
 [ext_resource type="Texture2D" uid="uid://3o1658rxkl08" path="res://assets/sprites/background/background_02.png" id="4_8468w"]
 [ext_resource type="Texture2D" uid="uid://banv1xw4blkcq" path="res://assets/sprites/xp-icon.png" id="9_ey1ou"]
 [ext_resource type="FontFile" uid="uid://dv8t8kpmqhrol" path="res://assets/font (from brackeys)/PixelOperator8-Bold.ttf" id="10_4raxq"]
@@ -240,6 +241,10 @@ script = ExtResource("2_whyny")
 [node name="lose_timer" type="Timer" parent="GameManager"]
 wait_time = 0.5
 one_shot = true
+
+[node name="pick-up" type="AudioStreamPlayer2D" parent="GameManager"]
+stream = ExtResource("3_on8eg")
+volume_db = 10.0
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 

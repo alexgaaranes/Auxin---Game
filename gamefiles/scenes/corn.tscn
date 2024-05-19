@@ -232,12 +232,10 @@ wait_time = 2.0
 [node name="hurt" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_ps8a1")
 volume_db = -10.0
-bus = &"SFX"
 
 [node name="die" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_rt34l")
 volume_db = -10.0
-bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

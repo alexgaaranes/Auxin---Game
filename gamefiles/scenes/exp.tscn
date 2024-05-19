@@ -1,8 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://2d5afl86ohmn"]
+[gd_scene load_steps=16 format=3 uid="uid://2d5afl86ohmn"]
 
 [ext_resource type="Script" path="res://scripts/exp.gd" id="1_k73or"]
 [ext_resource type="Texture2D" uid="uid://cuhu0jqb2w8w6" path="res://assets/sprites/xp-sprite-sheet.png" id="1_wfct5"]
-[ext_resource type="AudioStream" uid="uid://ccspehptm8dt0" path="res://assets/audio/sfx/pick-up.wav" id="3_npieh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7fdq7"]
 radius = 7.61577
@@ -106,10 +105,5 @@ position = Vector2(0, -7)
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_f70fq")
 autoplay = "default"
-
-[node name="pick-up" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_npieh")
-volume_db = 10.0
-bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
