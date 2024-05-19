@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxn43sykifi1v"]
+
+[ext_resource type="AudioStream" uid="uid://hetxx8kuy2k1" path="res://assets/audio/music/2019-12-09_-_Retro_Forest_-_David_Fesliyan.mp3" id="1_hplye"]
+[ext_resource type="Script" path="res://scripts/bgm.gd" id="2_lf2k3"]
+
+[node name="bgm" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_hplye")
+volume_db = -20.0
+autoplay = true
+bus = &"Music"
+script = ExtResource("2_lf2k3")

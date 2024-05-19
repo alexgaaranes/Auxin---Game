@@ -61,6 +61,7 @@ func _process(delta):
 		if directionXY[0] < 0:
 			sprite.flip_h = true
 		velocity.y = 0	# Suspend midair
+		$spin.play()
 		anim.play("spin")
 		charge += 1
 		
@@ -98,6 +99,7 @@ func _physics_process(delta):
 		accumulated_charge = charge
 		charge_time.stop()
 		#print(accumulated_charge, charge)
+		$attack.play()
 		anim.play("attack")
 		charging_spin = false
 		directionXY = get_direction()
@@ -115,6 +117,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("jump") and velocity.y == 0 and not can_release:
 		charging_spin = false
 		velocity.y = JUMP_VELOCITY
+		$jump.play()
 		anim.play("jump")
 	
 	# Causes pause

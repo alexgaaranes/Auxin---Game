@@ -1,7 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://dwyk40rswoq55"]
+[gd_scene load_steps=20 format=3 uid="uid://dwyk40rswoq55"]
 
 [ext_resource type="Script" path="res://scripts/corn.gd" id="1_o744e"]
 [ext_resource type="Texture2D" uid="uid://cawq257wer65o" path="res://assets/sprites/corn-sprite-sheet.png" id="2_fewwa"]
+[ext_resource type="AudioStream" uid="uid://d2e48gvbxv1c1" path="res://assets/audio/sfx/hurt.wav" id="3_ps8a1"]
+[ext_resource type="AudioStream" uid="uid://bvxms1a8bh64p" path="res://assets/audio/sfx/die.wav" id="4_rt34l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cg04l"]
 atlas = ExtResource("2_fewwa")
@@ -226,6 +228,16 @@ shape = SubResource("CapsuleShape2D_fp6ej")
 
 [node name="dmg _cd" type="Timer" parent="."]
 wait_time = 2.0
+
+[node name="hurt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ps8a1")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="die" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_rt34l")
+volume_db = -10.0
+bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

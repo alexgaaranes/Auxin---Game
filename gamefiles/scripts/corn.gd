@@ -13,8 +13,12 @@ func _process(delta):
 				print(body.get_alias())
 				alias = body.get_alias()
 				if alias == "snail":
+					$hurt.play()
+					anim.play("hurt")
 					game_manager.corndmg(1)
 				elif alias == "rat":
+					$hurt.play()
+					anim.play("hurt")
 					game_manager.corndmg(3)
 		on_cd = true
 		dmg_cd.start()
@@ -30,16 +34,15 @@ func _on_area_2d_body_entered(body):
 		print(body.get_alias())
 		alias = body.get_alias()
 		if alias == "snail":
-			anim.play("hurt")
 			game_manager.corndmg(1)
 		elif alias == "rat":
-			anim.play("hurt")
 			game_manager.corndmg(3)
 		
 func _on_dmg__cd_timeout():
 	on_cd = false
 
 func die():
+	$die.play()
 	Engine.time_scale = 0.3
 	dead = true
 	anim.play("die")

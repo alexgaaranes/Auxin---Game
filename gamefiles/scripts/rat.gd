@@ -18,6 +18,7 @@ var drop = true
 func got_hit(damage):
 	health -= damage
 	#print("rat damage! health is ", health)
+	$hit.play()
 	anim.play("hurt")
 	getting_hurt = true
 
