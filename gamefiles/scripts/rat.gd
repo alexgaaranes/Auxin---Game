@@ -6,6 +6,7 @@ const dmg = 3
 
 var health = 6
 var spawning = true
+var getting_hurt = false
 var player
 var direction
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -18,6 +19,7 @@ func got_hit(damage):
 	health -= damage
 	#print("rat damage! health is ", health)
 	anim.play("hurt")
+	getting_hurt = true
 
 var exp_obj = load("res://scenes/exp.tscn")
 
@@ -38,6 +40,8 @@ func _process(delta):
 
 
 func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "hurt":
+		getting_hurt = false
 	if anim_name == "die":
 		queue_free()
 	if anim_name == "spawn":
@@ -51,7 +55,7 @@ func get_alias():
 	return "rat"
 
 func _physics_process(delta):
-	if not spawning:
+	if not spawning and not getting_hurt:
 		if not is_on_floor():
 			velocity.y += gravity * delta
 		
