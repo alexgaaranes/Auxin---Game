@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwyk40rswoq55"]
+
+[ext_resource type="Texture2D" uid="uid://h6jpylxbjs8s" path="res://assets/sprites/corn64.png" id="1_e5bxf"]
+[ext_resource type="Script" path="res://scripts/corn.gd" id="1_o744e"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2yk2j"]
+radius = 12.0
+height = 66.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fp6ej"]
+radius = 17.0
+height = 66.0
+
+[node name="Corn" type="CharacterBody2D"]
+collision_layer = 10
+collision_mask = 9
+script = ExtResource("1_o744e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -32)
+texture = ExtResource("1_e5bxf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -32)
+shape = SubResource("CapsuleShape2D_2yk2j")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(1, -33)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_fp6ej")
+
+[node name="dmg _cd" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

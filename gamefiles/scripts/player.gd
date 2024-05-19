@@ -4,7 +4,7 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const CSPEED = 10.0
-const base_dmg = 1
+var base_dmg = 1
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -23,6 +23,15 @@ var can_release: bool
 var attacking: bool
 var dyn_dmg
 var accumulated_charge
+
+var time1 = 1.25
+var time2 = 0.75
+
+func upgrade():
+	base_dmg = 2
+	time1 = 0.75
+	time2 = 0.25
+	charge_time.wait_time = 1.0
 
 # Get direction
 func get_direction():
@@ -56,12 +65,12 @@ func _process(delta):
 		charge += 1
 		
 	if level1:
-		if $charge_time.time_left < 1.25:
+		if $charge_time.time_left < time1:
 			charge += 1
 			level1 = false
 			#print("level 2")
 	if level2: 
-		if $charge_time.time_left < 0.75:
+		if $charge_time.time_left < time2:
 			charge += 1
 			level2 = false
 			#rint("level 3")
@@ -91,9 +100,9 @@ func _physics_process(delta):
 		anim.play("attack")
 		charging_spin = false
 		directionXY = get_direction()
-		if directionXY[0] > 0:
-			sprite.flip_h = false
 		if directionXY[0] < 0:
+			sprite.flip_h = false
+		if directionXY[0] > 0:
 			sprite.flip_h = true
 		velocity.x = SPEED * charge * directionXY[0]
 		velocity.y = SPEED * charge * directionXY[1]
@@ -114,6 +123,7 @@ func _physics_process(delta):
 		anim.play("fall")
 	
 	if is_on_floor() and velocity.y == 0:
+		charge = 0
 		can_press = true
 		is_dropping = false
 		direction = Input.get_axis("crawl_left", "crawl_right")
@@ -129,10 +139,10 @@ func _physics_process(delta):
 
 
 	move_and_slide()
-	
-func picked_exp():
+
+func picked_exp(amount):
 	var game_manager = %GameManager
-	game_manager.addexp()
+	game_manager.addexp(amount)
 
 
 # ATTACK

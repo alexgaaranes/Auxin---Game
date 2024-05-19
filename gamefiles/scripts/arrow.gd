@@ -20,5 +20,7 @@ func _process(delta):
 		anim.play("orange")
 	elif charge == 3:
 		anim.play("yellow")
+	else:
+		anim.play("loop")
 	get_input()
 
