@@ -3,6 +3,7 @@ extends CharacterBody2D
 var on_cd: bool
 
 @onready var dmg_cd = $"dmg _cd"
+@onready var anim = get_node("AnimationPlayer")
 func _process(delta):
 	var game_manager = %GameManager
 	if not on_cd:
