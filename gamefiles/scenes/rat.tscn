@@ -1,7 +1,8 @@
-[gd_scene load_steps=35 format=3 uid="uid://u18fbkgs8f2l"]
+[gd_scene load_steps=36 format=3 uid="uid://u18fbkgs8f2l"]
 
 [ext_resource type="Texture2D" uid="uid://tig0lnypvk10" path="res://assets/sprites/rat-sprite-sheet.png" id="1_dykux"]
 [ext_resource type="Script" path="res://scripts/rat.gd" id="1_spxdq"]
+[ext_resource type="AudioStream" uid="uid://syyn4x26jw8t" path="res://assets/audio/sfx/enemy-get-hit.wav" id="3_hs85j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tknwo"]
 atlas = ExtResource("1_dykux")
@@ -538,5 +539,10 @@ root_node = NodePath("../AnimatedSprite2D")
 libraries = {
 "": SubResource("AnimationLibrary_33b8b")
 }
+
+[node name="hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_hs85j")
+volume_db = -20.0
+bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

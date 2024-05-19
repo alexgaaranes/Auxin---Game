@@ -5,6 +5,7 @@
 
 [node name="bgm" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_hplye")
+volume_db = -20.0
 autoplay = true
 bus = &"Music"
 script = ExtResource("2_lf2k3")

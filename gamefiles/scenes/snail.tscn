@@ -1,7 +1,8 @@
-[gd_scene load_steps=36 format=3 uid="uid://2rejg57r6y3"]
+[gd_scene load_steps=37 format=3 uid="uid://2rejg57r6y3"]
 
 [ext_resource type="Texture2D" uid="uid://btrrknfkknbt6" path="res://assets/sprites/snail-sprite-sheet.png" id="1_hmmay"]
 [ext_resource type="Script" path="res://scripts/snail.gd" id="1_rt866"]
+[ext_resource type="AudioStream" uid="uid://syyn4x26jw8t" path="res://assets/audio/sfx/enemy-get-hit.wav" id="3_4tnh3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cls4u"]
 atlas = ExtResource("1_hmmay")
@@ -530,5 +531,10 @@ libraries = {
 }
 
 [node name="hurt_timer" type="Timer" parent="."]
+
+[node name="hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_4tnh3")
+volume_db = -20.0
+bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
